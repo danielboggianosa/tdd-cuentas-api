@@ -4,6 +4,6 @@ module.exports = async (req, res, next) => {
         const data = await Empresa.getAll(req.query)
         return res.status(200).json({success: true, data})
     } catch (e) {
-        return res.status(501n).json({success:false})
+        return res.status(501).json({success:false})
     }
 }

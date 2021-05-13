@@ -27,8 +27,12 @@ module.exports = function setupEmpresaModel({ config }) {
     const read = readingSequelize.define(TABLE_ALIAS, bodyModel, { tableName: TABLE })
     const execute = executeSequelize.define(TABLE_ALIAS, bodyModel, { tableName: TABLE })
     
-    read.getAll = query => {
-        return read.findAll()
+    read.getAll = async query => {
+        return await read.findAll()
+    }
+
+    read.getById = async ({ id }, query) => {
+        return await read.findAll({where: {id}})
     }
 
     return { read, execute }
